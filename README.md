@@ -490,6 +490,8 @@ Redirection makes it possible to control where the output of a command goes to, 
 | `<`      | Redirecting input                            |
 | `<<`     | [Here documents](http://tldp.org/LDP/abs/html/here-docs.html) syntax |
 | `<<<`    | [Here strings](http://www.tldp.org/LDP/abs/html/x17837.html) |
+| `<()`    | Virtual file                                 |
+
 
 Here are few examples of using redirections:
 
