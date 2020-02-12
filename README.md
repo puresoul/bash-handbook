@@ -296,7 +296,7 @@ echo {00..8..2} # 00 02 04 06 08
 
 ## Command substitution
 
-Command substitution allow us to evaluate a command and substitute its value into another command or variable assignment. Command substitution is performed when a command is enclosed by ``` `` ``` or `$()`.  For example, we can use it as follows:
+Command substitution allow us to evaluate a command and substitute its value into another command or variable assignment. Command substitution is performed when a command is enclosed by ``` `` ``` or `$()`. Every shell expansion is executed inside subshell! For example, we can use it as follows:
 
 ```bash
 now=`date +%T`
@@ -540,6 +540,8 @@ If a command is terminated by the control operator `&`, the shell executes the c
 
 Commands separated by a `;` are executed sequentially: one after another. The shell waits for the finish of each command.
 
+Variables in a subshell are not visible outside the block of code in the subshell. They are not accessible to the parent process, to the shell that launched the subshell. These are, in effect, variables local to the child process.
+
 ```bash
 # command2 will be executed after command1
 command1 ; command2
@@ -566,6 +568,11 @@ command1 || command2
 ```
 
 The return code of an _AND_ or _OR_ list is the exit status of the last executed command.
+
+```bash
+# commands inside subshell
+(command1; command2)
+```
 
 # Here string, here document and virtual file
 
